@@ -1,0 +1,34 @@
+syntax:glob
+
+# Uploaded files - if we have uploaded files in the
+# repo then something went wrong.
+# ---------------------------------------------
+
+wp-content/uploads/*
+
+# SCSS and WP caches
+# ---------------------------------------------
+
+html/.sass-cache/*
+wp-content/themes/amis/.sass-cache/*
+
+# Composer stuff
+# ---------------------------------------------
+
+composer.phar
+composer.lock
+vendor/*
+
+# WordPress, installed by Composer
+# ---------------------------------------------
+
+# core/*
+
+# Misc
+# ---------------------------------------------
+
+error_log
+*~
+*.DS_Store
+/.settings/
+/.profile
