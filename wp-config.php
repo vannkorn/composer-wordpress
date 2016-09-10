@@ -28,12 +28,17 @@ else:
 	define('WP_ENV', 'localdev');
 endif;
 
-if( WP_ENV == 'prod' ):
+define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/core');
+define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME']);
+define('WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content');
+define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
+  
+if( WP_ENV == 'staging' ):
 
-	define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/core');
-	define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME']);
+	define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/SITENAME/core');
+	define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME'] . '/SITENAME');
 	define('WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content');
-	define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
+	define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/SITENAME/wp-content');
 
 	define('DB_NAME', 'DBNAME');
 	define('DB_USER', 'DBUSER');
@@ -43,13 +48,8 @@ if( WP_ENV == 'prod' ):
 	// Options
 
 	define('WP_DEBUG', false);
-  
-elseif( WP_ENV == 'staging' ):
 
-	define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/camwpdev/core');
-	define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME'] . '/camwpdev');
-	define('WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content');
-	define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/camwpdev/wp-content');
+elseif( WP_ENV == 'prod' ):
 
 	define('DB_NAME', 'DBNAME');
 	define('DB_USER', 'DBUSER');
@@ -61,11 +61,6 @@ elseif( WP_ENV == 'staging' ):
 	define('WP_DEBUG', false);
 
 elseif( WP_ENV == 'localdev' ):
-
-	define('WP_SITEURL', 'http://' . $_SERVER['SERVER_NAME'] . '/core');
-	define('WP_HOME',    'http://' . $_SERVER['SERVER_NAME']);
-	define('WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content');
-	define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
   
 	define('DB_NAME', 'DBNAME');
 	define('DB_USER', 'root');
